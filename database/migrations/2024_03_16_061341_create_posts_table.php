@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("title")->unique();
             $table->longtext("description");
+            $table->integer('views')->default(0);
             $table->string("tags")->nullable();
             $table->string("image")->nullable();
             $table->timestamps();

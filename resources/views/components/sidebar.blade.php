@@ -10,16 +10,16 @@
             <li class="menu-header">Main</li>
 
             <li class="dropdown active">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+              <a href="{{ route("dashboard") }}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li>
                 <a href="{{ route('company.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Company</span></a>
             </li>
             <li>
-                <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Category</span></a>
+                <a href="{{ route('category.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Category</span></a>
             </li>
             <li>
-                <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Post</span></a>
+                <a href="{{ route('post.index') }}" class="nav-link"><i data-feather="monitor"></i><span>Post</span></a>
             </li>
 
           </ul>
