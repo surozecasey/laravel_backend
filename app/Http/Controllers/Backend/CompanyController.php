@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -12,7 +13,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view("backend.company.index");
+        $info = Company::first();
+        return view("backend.company.index", compact('info'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view("backend.company.create");
     }
 
     /**
@@ -28,7 +30,14 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Company();
+        $company->name = $request->name;
+        $company->address = $request->address;
+        $company->pan = $request->pan;
+        $company->email = $request->email;
+        uploadImage($request, $company);
+        $company->save();
+        return redirect()->route('company.index');
     }
 
     /**
@@ -44,7 +53,8 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $company = Company::find($id);
+        return view('backend.company.edit', compact('company'));
     }
 
     /**
@@ -52,7 +62,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $company = Company::find($id);
+        $company->name = $request->name;
+        $company->address = $request->address;
+        $company->pan = $request->pan;
+        $company->email = $request->email;
+        uploadImage($request, $company);
+        $company->update();
+        return redirect()->route('company.index');
     }
 
     /**
